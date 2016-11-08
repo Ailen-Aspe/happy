@@ -1,14 +1,20 @@
-@app.route('./root')
+from flask import Flask
 
-def name():
-    return 'hello flask'
+app = Flask(__name__)
+@app.route('/')
+def page():
+   return "Welcome to the Page"
 
-@app.route('./greet/<name>')
+@app.route('/root/')
+def root():
+   return "hello flask";
+
+@app.route('/greet/<name>')
 
 def greet(name):
-    name = raw_input("Username: ")
-    return "hello %s" %name
+   return "Hello %s" %name
 
 
-name = input()
-greet(name)
+if __name__ == '__main__':
+   app.run()
+
